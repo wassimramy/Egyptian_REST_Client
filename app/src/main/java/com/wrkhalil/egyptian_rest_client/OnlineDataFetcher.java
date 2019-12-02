@@ -6,6 +6,8 @@ import android.view.View;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -28,24 +30,22 @@ public class OnlineDataFetcher {
 
     private void fetchData(){
 
-        // Request a string response from the provided URL.
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                response -> {
-                    // Display the first 500 characters of the response string.
-                    //response = response.substring(0, 500);
-                    Log.d("Response from JSONPlaceholder\n:", "Data is fetched successfully\n" + response);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
-                    try {
-                        Log.d("JSON Parser", "Started");
-                        //JSONObject jsonObject = new JSONObject(response);
-                        JSONArray postArray = response.getJSONArray("");
-
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ",  response.toString());
                     }
-                }, error -> Log.d("Response from JSONPlaceholder\n:", "Data is unavailable"));
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+
+                    }
+                });
+
 
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(JSON_TIME_OUT,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -54,6 +54,8 @@ public class OnlineDataFetcher {
         BaseApplication.queue.add(jsonObjectRequest);
 
     }
+
+
 
     private void JSONParser (String response){
 
