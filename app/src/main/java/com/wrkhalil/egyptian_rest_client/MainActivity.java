@@ -19,18 +19,19 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.my_recycler_view);
+        //recyclerView = findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        //recyclerView.setLayoutManager(layoutManager);
 
-        OnlineDataFetcher postsDataFetcher = new OnlineDataFetcher("https://jsonplaceholder.typicode.com/posts");
-        OnlineDataFetcher usersDataFetcher = new OnlineDataFetcher("https://jsonplaceholder.typicode.com/users");
+        OnlineDataFetcher postsDataFetcher = new OnlineDataFetcher("https://jsonplaceholder.typicode.com/posts/");
+
+        //OnlineDataFetcher usersDataFetcher = new OnlineDataFetcher("https://jsonplaceholder.typicode.com/users");
 
         /*
                 //Retrieve the position of the item clicked in the recycleView and send it to startItemEditActivity to show the respective item information
