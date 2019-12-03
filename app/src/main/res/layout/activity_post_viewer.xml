@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10pt"
+    tools:context=".PostViewerActivity">
+
+
+    <LinearLayout android:id="@+id/centerContent"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:paddingLeft="10pt"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemTitleTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="#000000"
+            android:textSize="10pt"
+            android:fontFamily="serif"
+            android:padding="0pt"
+            android:text="Post Title" />
+
+        <TextView
+            android:id="@+id/itemAuthorNameTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/grey"
+            android:textSize="8pt"
+            android:fontFamily="serif"
+            android:paddingLeft="5pt"
+            android:text="By:" />
+
+        <TextView
+            android:id="@+id/itemBodyTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="#000000"
+            android:textSize="8pt"
+            android:fontFamily="serif"
+            android:padding="10pt"
+            android:text="Body" />
+
+        <TextView
+            android:id="@+id/commentsTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="#000000"
+            android:textSize="10pt"
+            android:fontFamily="serif"
+            android:paddingTop="10pt"
+            android:paddingBottom="5pt"
+            android:text="Comments" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/commentsRecyclerViewer"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="0pt"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

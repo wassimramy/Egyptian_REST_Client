@@ -118,7 +118,7 @@ public class UsersFetcher {
 
                                 BaseApplication.usersList.add(new User (id, name, username, email,
                                         address, phone, website, company));
-                                UsersFetcher.this.usersDownloadStatusTextView.setText("Downloading post # " + index + " UserID " + userId);
+                                UsersFetcher.this.usersDownloadStatusTextView.setText("Downloading post # " + index);
                                 Log.d("Response" , "post ID: " + index);
                                 index ++;
                                 UsersFetcher.this.fetchUser(cache);

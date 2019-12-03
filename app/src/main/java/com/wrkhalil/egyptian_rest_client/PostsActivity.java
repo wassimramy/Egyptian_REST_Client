@@ -1,5 +1,6 @@
 package com.wrkhalil.egyptian_rest_client;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -40,9 +41,8 @@ public class PostsActivity extends AppCompatActivity {
 
 
     private void showPostActivity(int position){
-        //Intent intent = new Intent(this, PostViewerActivity.class);
-        //intent.putExtra("Position", position); //Sends the URI value to the ShowPictureActivity to fetch the picture
-        //startActivity(intent); //Start the activity
-        this.finish();
+        Intent intent = new Intent(this, PostViewerActivity.class);
+        intent.putExtra("Position", position); //Sends the URI value to the ShowPictureActivity to fetch the picture
+        startActivity(intent); //Start the activity
     }
 }

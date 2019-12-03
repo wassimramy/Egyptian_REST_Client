@@ -81,29 +81,24 @@ public class CommentsFetcher {
             String url= "https://jsonplaceholder.typicode.com/comments/"+index;
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    (Request.Method.GET, url, null, response -> {
+                        Log.d("Response" , "Response:\n" + response);
+                        String name, email, body = "null";
+                        int id, postId = 0;
+                        try {
+                            postId = response.getInt("postId");
+                            id = response.getInt("id");
+                            name = response.getString("name");
+                            email = response.getString("email");
+                            body = response.getString("body");
+                            BaseApplication.commentsList.add(new Comment (postId, id, name, email, body));
+                            CommentsFetcher.this.commentsDownloadStatusTextView.setText("Downloading comment # " + index);
+                            Log.d("Response" , "comment Body: " + body);
+                            index ++;
+                            CommentsFetcher.this.fetchComment(cache);
 
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Log.d("Response" , "Response:\n" + response);
-                            String name, email, body = "null";
-                            int id, postId = 0;
-                            try {
-                                postId = response.getInt("postId");
-                                id = response.getInt("id");
-                                name = response.getString("name");
-                                email = response.getString("email");
-                                body = response.getString("body");
-                                BaseApplication.commentsList.add(new Comment (postId, id, name, email, body));
-                                CommentsFetcher.this.commentsDownloadStatusTextView.setText("Downloading comment # " + index);
-                                Log.d("Response" , "comment ID: " + index);
-                                index ++;
-                                CommentsFetcher.this.fetchComment(cache);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }, new Response.ErrorListener() {
 

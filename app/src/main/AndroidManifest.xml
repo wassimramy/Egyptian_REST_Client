@@ -24,7 +24,11 @@
         </activity>
 
         <activity
-            android:name=".PostsActivity"
+        android:name=".PostsActivity"
+        android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".PostViewerActivity"
             android:windowSoftInputMode="adjustResize" />
 
     </application>

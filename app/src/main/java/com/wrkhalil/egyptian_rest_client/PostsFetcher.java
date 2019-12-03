@@ -97,7 +97,7 @@ public class PostsFetcher {
                                 title = response.getString("title");
                                 body = response.getString("body");
                                 BaseApplication.postsList.add(new Post (userId, id, title, body));
-                                PostsFetcher.this.postsDownloadStatusTextView.setText("Downloading post # " + index + " UserID " + userId);
+                                PostsFetcher.this.postsDownloadStatusTextView.setText("Downloading post # " + index );
                                 Log.d("Response" , "post ID: " + index);
                                 index ++;
                                 PostsFetcher.this.fetchPost(cache);
