@@ -7,11 +7,37 @@
     android:padding="10pt"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:scrollbars="vertical"
+
+    <TextView
+        android:id="@+id/postsDownloadStatusTextView"
         android:layout_width="match_parent"
-        android:layout_marginBottom="0pt"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/grey"
+        android:fontFamily="sans-serif"
+        android:padding="10pt"
+        android:text="Posts Download Status" />
+    <TextView
+        android:id="@+id/usersDownloadStatusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/grey"
+        android:fontFamily="sans-serif"
+        android:padding="10pt"
+        android:text="Users Download Status" />
+
+    <TextView
+        android:id="@+id/commentsDownloadStatusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/grey"
+        android:fontFamily="sans-serif"
+        android:padding="10pt"
+        android:text="Comments Download Status" />
 
 </LinearLayout>

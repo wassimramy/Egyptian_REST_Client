@@ -6,12 +6,14 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseApplication extends Application {
 
-    public static List<Post> postsList;
-    public static List<Post> usersList;
+    public static List<Post> postsList = new ArrayList<>();
+    public static List<User> usersList = new ArrayList<>();
+    public static List<Comment> commentsList = new ArrayList<>();
     public static RequestQueue queue;
     private static Context context;
 

@@ -2,6 +2,7 @@ package com.wrkhalil.egyptian_rest_client;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull PostAdapter.MyViewHolder holder, final int position) {
 
         holder.itemTitleTextView.setText(postsList.get(position).getTitle());
-        holder.itemPostIDTextView.setText(postsList.get(position).getId());
+        holder.itemAuthorNameTextView.setText( "By: " + BaseApplication.usersList.get(postsList.get(position).getUserId()-1).getUsername() );
+        holder.itemPostIDTextView.setText( "Post ID: " + postsList.get(position).getId());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
