@@ -33,7 +33,7 @@
             android:textColor="@color/grey"
             android:textSize="8pt"
             android:fontFamily="serif"
-            android:onClick="viewUser"
+            android:onClick="showUserViewer"
             android:paddingLeft="5pt"
             android:text="By:" />
 

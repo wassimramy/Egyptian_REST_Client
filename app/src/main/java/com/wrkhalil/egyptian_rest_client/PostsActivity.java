@@ -42,7 +42,7 @@ public class PostsActivity extends AppCompatActivity {
 
     private void showPostActivity(int position){
         Intent intent = new Intent(this, PostViewerActivity.class);
-        intent.putExtra("Position", position); //Sends the URI value to the ShowPictureActivity to fetch the picture
+        intent.putExtra("postId", BaseApplication.postsList.get(position).getId()); //Sends the URI value to the ShowPictureActivity to fetch the picture
         startActivity(intent); //Start the activity
     }
 }
