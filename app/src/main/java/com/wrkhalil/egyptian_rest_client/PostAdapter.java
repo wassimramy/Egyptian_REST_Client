@@ -22,7 +22,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
 
     Context context;
     List<Post> postsList;
-    List<Post> usersList;
 
 
     public OnPostAdapterItemClickListener onPostAdapterItemClickListener;
@@ -47,12 +46,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         holder.itemAuthorNameTextView.setText( "By: " + BaseApplication.usersList.get(postsList.get(position).getUserId()-1).getUsername() );
         holder.itemPostIDTextView.setText( "Post ID: " + postsList.get(position).getId());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onPostAdapterItemClickListener.onItemClicked(position);
-            }
-        });
+        holder.itemView.setOnClickListener(v -> onPostAdapterItemClickListener.onItemClicked(position));
     }
 
     public int getItemCount(){

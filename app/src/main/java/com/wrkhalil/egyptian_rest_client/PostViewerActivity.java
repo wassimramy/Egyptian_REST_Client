@@ -2,6 +2,7 @@ package com.wrkhalil.egyptian_rest_client;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class PostViewerActivity extends AppCompatActivity {
 
         itemTitleTextView.setText(BaseApplication.postsList.get(position).getTitle());
         itemBodyTextView.setText(BaseApplication.postsList.get(position).getBody());
-        itemAuthorNameTextView.setText("By: " + BaseApplication.usersList.get(BaseApplication.postsList.get(position).getUserId()-1).getName());
+        itemAuthorNameTextView.setText("By: " + BaseApplication.usersList.get(BaseApplication.postsList.get(position).getUserId()-1).getUsername());
 
 
         // use this setting to improve performance if you know that changes
@@ -67,5 +68,13 @@ public class PostViewerActivity extends AppCompatActivity {
         //intent.putExtra("Position", position); //Sends the URI value to the ShowPictureActivity to fetch the picture
         //startActivity(intent); //Start the activity
         this.finish();
+    }
+
+    public void viewUserActivity(View view) {
+        Intent intent = new Intent(this, PostViewerActivity.class);
+        intent.putExtra("Position", BaseApplication.postsList.get(position).getUserId()-1); //Sends the URI value to the ShowPictureActivity to fetch the picture
+        startActivity(intent); //Start the activity
+        this.finish();
+        itemAuthorNameTextView.getText();
     }
 }

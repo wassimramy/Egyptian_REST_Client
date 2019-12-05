@@ -13,7 +13,6 @@ import com.android.volley.Cache;
 import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
@@ -28,12 +27,19 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
 
     private Cache cache;
     private boolean usersFetched, commentsFetched, postsFetched = false;
     private TextView usersDownloadStatusTextView;
     private TextView commentsDownloadStatusTextView;
+    private TextView postsDownloadStatusTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +48,75 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        TextView postsDownloadStatusTextView = findViewById(R.id.postsDownloadStatusTextView);
+        postsDownloadStatusTextView = findViewById(R.id.postsDownloadStatusTextView);
         usersDownloadStatusTextView = findViewById(R.id.usersDownloadStatusTextView);
         commentsDownloadStatusTextView = findViewById(R.id.commentsDownloadStatusTextView );
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+
+        Call<List<Post>> callPosts = jsonPlaceHolderApi.getPosts();
+        callPosts.enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+
+                BaseApplication.postsList.addAll(response.body());
+                setPostsFetched(true);
+                showPostsActivity();
+                postsDownloadStatusTextView.setText("All posts have been downloaded successfully!");
+                Log.d("Fetching Posts", "Successful!");
+            }
+
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+
+                Log.d("Fetching Posts", "Failed!");
+            }
+        });
+
+        Call<List<User>> callUsers = jsonPlaceHolderApi.getUsers();
+        callUsers.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+
+                BaseApplication.usersList.addAll(response.body());
+                setUsersFetched(true);
+                showPostsActivity();
+                usersDownloadStatusTextView.setText("All Users have been downloaded successfully!");
+                Log.d("Fetching Users", "Successful!");
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+
+                Log.d("Fetching Users", "Failed!");
+            }
+        });
+
+        Call<List<Comment>> callComments = jsonPlaceHolderApi.getComments();
+        callComments.enqueue(new Callback<List<Comment>>() {
+            @Override
+            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
+
+                BaseApplication.commentsList.addAll(response.body());
+                setCommentsFetched(true);
+                showPostsActivity();
+                commentsDownloadStatusTextView.setText("All Comments have been downloaded successfully!");
+                Log.d("Fetching Comments", "Successful!");
+            }
+
+            @Override
+            public void onFailure(Call<List<Comment>> call, Throwable t) {
+
+                Log.d("Fetching Comments", "Failed!");
+            }
+        });
+
         Log.d("Response:", "Class is instantiated\n");
-        cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
-        PostsFetcher postsFetcher = new PostsFetcher(cache, postsDownloadStatusTextView, this);
-        CommentsFetcher commentsFetcher = new CommentsFetcher(cache, commentsDownloadStatusTextView, this);
-        UsersFetcher usersFetcher = new UsersFetcher(cache, usersDownloadStatusTextView, this);
 
     }
 
