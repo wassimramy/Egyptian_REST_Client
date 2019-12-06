@@ -86,10 +86,6 @@ public class PostViewerActivity extends AppCompatActivity {
     }
 
     private void showPostActivity(int position){
-        //Intent intent = new Intent(this, PostViewerActivity.class);
-        //intent.putExtra("Position", position); //Sends the URI value to the ShowPictureActivity to fetch the picture
-        //startActivity(intent); //Start the activity
-        this.finish();
     }
 
     public void showUserViewer(View view) {

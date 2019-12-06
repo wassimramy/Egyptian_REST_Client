@@ -56,11 +56,11 @@ public class UserViewerActivity extends Activity {
     private void retrieveUserInformation(int userId){
         for (int i = 0 ; i < BaseApplication.usersList.size() ; i++){
             if (BaseApplication.usersList.get(i).getId() == userId){
-                nameTextView.setText(       "Name: " + BaseApplication.usersList.get(i).getName());
-                usernameTextView.setText(   "Username: " + BaseApplication.usersList.get(i).getUsername());
-                emailTextView.setText(      "Email: " + BaseApplication.usersList.get(i).getEmail());
-                phoneTextView.setText(      "Phone: " + BaseApplication.usersList.get(i).getPhone());
-                websiteTextView.setText(    "Website : " + BaseApplication.usersList.get(i).getWebsite());
+                nameTextView.       setText("Name: " + BaseApplication.usersList.get(i).getName());
+                usernameTextView.   setText("Username: " + BaseApplication.usersList.get(i).getUsername());
+                emailTextView.      setText("Email: " + BaseApplication.usersList.get(i).getEmail());
+                phoneTextView.      setText("Phone: " + BaseApplication.usersList.get(i).getPhone());
+                websiteTextView.    setText("Website : " + BaseApplication.usersList.get(i).getWebsite());
                 break;
             }
         }
