@@ -54,11 +54,13 @@
                 android:id="@+id/saveButton"
                 android:layout_width="80pt"
                 android:layout_height="wrap_content"
+                android:onClick="postComment"
                 android:text="Save" />
             <Button
                 android:id="@+id/cancelButton"
                 android:layout_width="80pt"
                 android:layout_height="wrap_content"
+                android:onClick="returnToPost"
                 android:text="Cancel" />
 
         </TableRow>

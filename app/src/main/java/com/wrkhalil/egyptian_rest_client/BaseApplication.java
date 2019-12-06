@@ -9,18 +9,28 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class BaseApplication extends Application {
 
     public static List<Post> postsList = new ArrayList<>();
     public static List<User> usersList = new ArrayList<>();
     public static List<Comment> commentsList = new ArrayList<>();
     public static RequestQueue queue;
+    public static JsonPlaceHolderApi jsonPlaceHolderApi;
     private static Context context;
 
     public void onCreate() {
         super.onCreate();
         BaseApplication.context = getApplicationContext();
         queue = Volley.newRequestQueue(BaseApplication.getAppContext());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
     }
 
     public static Context getAppContext() {

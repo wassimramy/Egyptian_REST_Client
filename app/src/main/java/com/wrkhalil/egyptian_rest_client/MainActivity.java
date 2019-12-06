@@ -7,20 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.android.volley.Cache;
-
-
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.wrkhalil.egyptian_rest_client.BaseApplication.jsonPlaceHolderApi;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Cache cache;
     private boolean usersFetched, commentsFetched, postsFetched = false;
     private TextView usersDownloadStatusTextView;
     private TextView commentsDownloadStatusTextView;
@@ -36,13 +32,6 @@ public class MainActivity extends AppCompatActivity {
         postsDownloadStatusTextView = findViewById(R.id.postsDownloadStatusTextView);
         usersDownloadStatusTextView = findViewById(R.id.usersDownloadStatusTextView);
         commentsDownloadStatusTextView = findViewById(R.id.commentsDownloadStatusTextView );
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
         Call<List<Post>> callPosts = jsonPlaceHolderApi.getPosts();
         callPosts.enqueue(new Callback<List<Post>>() {

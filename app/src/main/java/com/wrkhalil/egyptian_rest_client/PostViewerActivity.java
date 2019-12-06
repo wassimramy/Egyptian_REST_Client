@@ -16,7 +16,7 @@ public class PostViewerActivity extends AppCompatActivity {
 
     private List<Comment> commentsList = new ArrayList<>();
     private TextView itemTitleTextView, itemBodyTextView, itemAuthorNameTextView;
-    private int userId = 0;
+    private int userId, postId  = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -25,8 +25,8 @@ public class PostViewerActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        int postId = intent.getIntExtra ("postId", 0); //get the URI value from the previous activity
-        populateCommentsList(postId);
+        postId = intent.getIntExtra ("postId", 0); //get the URI value from the previous activity
+        populateCommentsList();
 
         setContentView(R.layout.activity_post_viewer);
         recyclerView = findViewById(R.id.commentsRecyclerViewer);
@@ -35,7 +35,7 @@ public class PostViewerActivity extends AppCompatActivity {
         itemBodyTextView = findViewById(R.id.itemBodyTextView);
         itemTitleTextView = findViewById(R.id.itemTitleTextView);
 
-        retrievePostInformation(postId);
+        retrievePostInformation();
 
 
         // use this setting to improve performance if you know that changes
@@ -53,7 +53,7 @@ public class PostViewerActivity extends AppCompatActivity {
 
     }
 
-    private void retrievePostInformation(int postId){
+    private void retrievePostInformation(){
         for (int i = 0 ; i < BaseApplication.postsList.size() ; i++){
             if (BaseApplication.postsList.get(i).getId() == postId){
                 userId = BaseApplication.postsList.get(i).getUserId();
@@ -77,7 +77,7 @@ public class PostViewerActivity extends AppCompatActivity {
 
 
 
-    private void populateCommentsList(int postId){
+    private void populateCommentsList(){
         for (int i = 0 ; i < BaseApplication.commentsList.size() ; i++){
             if (BaseApplication.commentsList.get(i).getPostId() == postId){
                 commentsList.add(BaseApplication.commentsList.get(i));
@@ -91,6 +91,12 @@ public class PostViewerActivity extends AppCompatActivity {
     public void showUserViewer(View view) {
         Intent intent = new Intent(this, UserViewerActivity.class);
         intent.putExtra("userId", userId); //Sends the URI value to the ShowPictureActivity to fetch the picture
+        startActivity(intent); //Start the activity
+    }
+
+    public void showPostComment(View view) {
+        Intent intent = new Intent(this, PostCommentActivity.class);
+        intent.putExtra("postId", postId); //Sends the URI value to the ShowPictureActivity to fetch the picture
         startActivity(intent); //Start the activity
     }
 }

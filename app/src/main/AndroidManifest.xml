@@ -35,6 +35,10 @@
             android:name=".UserViewerActivity"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".PostCommentActivity"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>
