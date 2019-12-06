@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding = "10pt"
+    tools:context=".PostCommentActivity">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/commentEmailTextView"
+        android:layout_width="match_parent"
+        android:layout_height="22pt"
+        android:fadeScrollbars="true"
+        android:fontFamily="serif"
+        android:hint="Email Address"
+        android:maxLength="30"
+        android:textColor="#000000"
+        android:textSize="10pt" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/commentTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="22pt"
+        android:fadeScrollbars="true"
+        android:fontFamily="serif"
+        android:hint="Title"
+        android:maxLength="30"
+        android:textColor="#000000"
+        android:textSize="10pt" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/commentBodyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="55pt"
+        android:fadeScrollbars="true"
+        android:textSize="10pt"
+        android:textColor="#000000"
+        android:fontFamily="serif"
+        android:hint="Body" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
+
+        <TableRow/>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="80pt"
+                android:layout_height="wrap_content"
+                android:text="Save" />
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="80pt"
+                android:layout_height="wrap_content"
+                android:text="Cancel" />
+
+        </TableRow>
+
+        <TableRow>
+
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
