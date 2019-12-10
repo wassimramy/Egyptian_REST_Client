@@ -17,13 +17,24 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/nameTextView"
+            android:id="@+id/userInfoTextView"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="#000000"
             android:textSize="10pt"
             android:fontFamily="serif"
-            android:padding="0pt"
+            android:paddingTop="10pt"
+            android:paddingBottom="5pt"
+            android:text="User Info" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="#000000"
+            android:textSize="8pt"
+            android:fontFamily="serif"
+            android:paddingBottom="1pt"
             android:text="Name" />
 
         <TextView
@@ -31,9 +42,9 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="#000000"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:fontFamily="serif"
-            android:padding="0pt"
+            android:paddingBottom="1pt"
             android:text="Username" />
 
         <TextView
@@ -41,9 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="#000000"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:fontFamily="serif"
-            android:padding="0pt"
+            android:paddingBottom="1pt"
             android:text="Email" />
 
         <TextView
@@ -51,9 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="#000000"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:fontFamily="serif"
-            android:padding="0pt"
+            android:paddingBottom="1pt"
             android:text="Phone" />
 
         <TextView
@@ -61,17 +72,23 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="#000000"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:fontFamily="serif"
-            android:padding="0pt"
+            android:paddingBottom="1pt"
             android:text="Website" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
         <TextView
             android:id="@+id/postsTextView"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="#000000"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:fontFamily="serif"
             android:paddingTop="10pt"
             android:paddingBottom="5pt"
