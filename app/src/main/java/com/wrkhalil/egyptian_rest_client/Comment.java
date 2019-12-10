@@ -7,17 +7,6 @@ public class Comment {
     private String email;
     private String body;
 
-    /*
-    Comment (int postId, int id, String name, String email, String body){
-        this.postId = postId;
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.body = body;
-    }
-    */
-
-
     Comment (int postId, String name, String email, String body){
         this.postId = postId;
         this.name = name;

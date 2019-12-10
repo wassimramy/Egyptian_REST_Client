@@ -66,12 +66,12 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/addAnItem"
+            android:id="@+id/postNewComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-30pt"
             android:onClick="showPostComment"
-            android:text="Post a comment" />
+            android:text="Post a new comment" />
     </LinearLayout>
 
 
