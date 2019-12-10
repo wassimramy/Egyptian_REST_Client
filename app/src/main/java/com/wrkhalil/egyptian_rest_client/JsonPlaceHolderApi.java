@@ -9,15 +9,15 @@ import retrofit2.http.POST;
 
 public interface JsonPlaceHolderApi {
 
-    @GET("posts")
+    @GET("posts") //Retrieve all posts and store them in a list of type Post
     Call<List<Post>> getPosts();
 
-    @GET("users")
+    @GET("users") //Retrieve all users and store them in a list of type User
     Call<List<User>> getUsers();
 
-    @GET("comments")
+    @GET("comments") //Retrieve all comments and store them in a list of type Comment
     Call<List<Comment>> getComments();
 
-    @POST("comments")
+    @POST("comments")  //Post a comment
     Call<Comment> postComment(@Body Comment comment);
 }
