@@ -33,16 +33,16 @@ public class PostsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        //Retrieve the position of the item clicked in the recycleView and send it to startItemEditActivity to show the respective item information
+        //Retrieve the position of the item clicked in the recycleView and send it to PostViewerActivity to show the respective post information + comments
         PostAdapter postAdapter = new PostAdapter(this, BaseApplication.postsList, this::showPostActivity);
         recyclerView.setAdapter(postAdapter); //Update the recyclerView
 
     }
 
-
+    //Starts when the user taps the recyclerView
     private void showPostActivity(int position){
         Intent intent = new Intent(this, PostViewerActivity.class);
-        intent.putExtra("postId", BaseApplication.postsList.get(position).getId()); //Sends the URI value to the ShowPictureActivity to fetch the picture
+        intent.putExtra("postId", BaseApplication.postsList.get(position).getId()); //Sends the postId value to the PostViewerActivity to display the selected post
         startActivity(intent); //Start the activity
     }
 }
