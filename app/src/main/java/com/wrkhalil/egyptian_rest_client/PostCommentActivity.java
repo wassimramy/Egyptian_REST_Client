@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.wrkhalil.egyptian_rest_client.BaseApplication.commentsList;
 import static com.wrkhalil.egyptian_rest_client.BaseApplication.jsonPlaceHolderApi;
 
 public class PostCommentActivity extends Activity {
@@ -64,6 +66,7 @@ public class PostCommentActivity extends Activity {
             @Override
             public void onResponse(Call<Comment> call, Response<Comment> response) {
                 BaseApplication.commentsList.add(response.body()); //Add the new comment posted to the comment list to display it
+                Toast.makeText(getApplicationContext(), "Comment " + commentsList.get(commentsList.size()-1).getId() + " is posted successfully!", Toast.LENGTH_SHORT).show();
                 returnToPost(view); //Switch back to the post to view the new comment posted
                 Log.d("Comment Feedback", "Successful!"); //If the HTTP request has succeeded, display this log line
             }
